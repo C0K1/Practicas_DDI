@@ -5,7 +5,9 @@ using UnityEngine;
 public class InventoryUI : MonoBehaviour 
 {
 	public GameObject inventoryPanel;
+	public Transform itemsTransform;
 	private Inventory inventory;
+	private Slot[] itemSlots;
 
 	/// <summary>
 	/// Start is called on the frame when a script is enabled just before
@@ -14,6 +16,7 @@ public class InventoryUI : MonoBehaviour
 	void Start()
 	{
 		inventory = FindObjectOfType<Inventory>();
+		itemSlots = itemsTransform.GetComponentsInChildren<Slot>();
 		if (inventory == null)
 		{
 			Debug.LogWarning("No se encontró el Inventario");
@@ -37,16 +40,15 @@ public class InventoryUI : MonoBehaviour
 
 	void UpdateUI()
 	{
-		Slot[] slots = GetComponentsInChildren<Slot>();
-		for (int i = 0; i < slots.Length; i++)
+		for (int i = 0; i < itemSlots.Length; i++)
 		{
 			if(i < inventory.items.Count)
 			{
-				slots[i].AddItem(inventory.items[i]);
+				itemSlots[i].AddItem(inventory.items[i]);
 			}
 			else
 			{
-				slots[i].ClearSlot();
+				itemSlots[i].ClearSlot();
 			}
 		}
 	}

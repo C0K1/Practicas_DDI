@@ -1591,6 +1591,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryPanel: {fileID: 69307022}
+  itemsTransform: {fileID: 1922313723}
 --- !u!1001 &1522526765
 Prefab:
   m_ObjectHideFlags: 0
